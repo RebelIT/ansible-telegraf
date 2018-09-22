@@ -1,0 +1,14 @@
+[telegraf:vars]
+  telegraf_version=4.5.2
+  ssh_user=pi
+  ansible_become=true
+
+[telegraf:children]
+  standard
+  custom
+
+[standard]
+  10.0.0.218
+
+[custom]
+  10.0.0.0

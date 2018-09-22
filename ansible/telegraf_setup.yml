@@ -1,0 +1,8 @@
+---
+- hosts:
+    standard
+  connection: ssh
+  remote_user: "{{ ssh_user }}"
+
+  roles:
+    - telegraf
