@@ -3,7 +3,7 @@
     - name: Curl to get influx repo key
       command: bash -c "curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -"
     - name: Add repo
-      command: echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+      command: bash -c echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 
   - name: Install Telegraf
     apt:
