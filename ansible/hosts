@@ -1,14 +1,35 @@
-[telegraf:vars]
-  telegraf_version=4.5.2
+##############################
+##All vars
+[everything:vars]
   ssh_user=pi
   ansible_become=true
+  db=10.0.0.x
+  telegraf_version=4.5.2
 
-[telegraf:children]
-  standard
-  custom
+##############################
+##Children
+[everything:children]
+  utility
+#  plex
 
-[standard]
-  10.0.0.218
+[utility:children]
+  utility01
 
-[custom]
-  10.0.0.0
+#[plex:children]
+#  plex01
+
+##############################
+##Vars
+[utility:vars]
+  app=utility
+
+#[plex:vars]
+#  app=plex
+
+##############################
+##Hosts
+[utility01]
+  10.0.0.x
+
+#[plex01]
+#  10.0.0.0

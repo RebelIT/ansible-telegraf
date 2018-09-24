@@ -1,6 +1,5 @@
 ---
-- hosts:
-    standard
+- hosts: all
   connection: ssh
   remote_user: "{{ ssh_user }}"
 
