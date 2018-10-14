@@ -3,33 +3,34 @@
 [everything:vars]
   ssh_user=pi
   ansible_become=true
-  db=10.0.0.x
-  telegraf_version=4.5.2
+  db=10.0.0.115
 
 ##############################
 ##Children
 [everything:children]
-  utility
-#  plex
+  calendar
+  metrics
 
-[utility:children]
-  utility01
+[calendar:children]
+  piCalendar
 
-#[plex:children]
-#  plex01
+[metrics:children]
+  piMetrics
 
 ##############################
 ##Vars
-[utility:vars]
-  app=utility
+[piMetrics:vars]
+  app=grafana
+  hardware=pi_3b
 
-#[plex:vars]
-#  app=plex
+[piCalendar:vars]
+  app=calendar
+  hardware=pi_zero
 
 ##############################
 ##Hosts
-[utility01]
-  10.0.0.x
+[piMetrics]
+  10.0.0.000
 
-#[plex01]
-#  10.0.0.0
+[piCalendar]
+  10.0.0.000

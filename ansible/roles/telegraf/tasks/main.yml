@@ -1,9 +1,14 @@
 ---
-  - block:
-    - name: Curl to get influx repo key
-      command: bash -c "curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -"
-    - name: Add repo
-      command: bash -c echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+  - name: Curl to get influx repo key
+    command: bash -c "curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -"
+
+  - name: Add custom download source
+    blockinfile:
+      path: /etc/apt/sources.list.d/influxdb.list
+      marker: "##<!-- {mark} ANSIBLE MANAGED BLOCK -->"
+      block: |
+        deb https://repos.influxdata.com/debian stretch stable
+      create: yes
 
   - name: Install Telegraf
     apt:

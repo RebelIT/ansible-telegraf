@@ -6,5 +6,5 @@ ansible for installing telegraf
 
   ```
   --ask-sudo-pass may be required if running reboot role due to your local setup
-  ansible-playbook telegraf_setup.yml -i hosts --ask-sudo-pass
+  ansible-playbook telegraf_setup.yml -i hosts
   ```
