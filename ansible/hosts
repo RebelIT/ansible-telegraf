@@ -1,36 +1,16 @@
 ##############################
-##All vars
-[everything:vars]
+[hosts:vars]
   ssh_user=pi
+  gopath=/home/pi/go/
+  telegraf_db=10.0.0.115
   ansible_become=true
-  db=10.0.0.115
 
-##############################
-##Children
-[everything:children]
-  calendar
-  metrics
+[hosts:children]
+  host1
 
-[calendar:children]
-  piCalendar
+[host1:vars]
+  app=someAppNameHereforTag
+  hardware=pi
 
-[metrics:children]
-  piMetrics
-
-##############################
-##Vars
-[piMetrics:vars]
-  app=grafana
-  hardware=pi_3b
-
-[piCalendar:vars]
-  app=calendar
-  hardware=pi_zero
-
-##############################
-##Hosts
-[piMetrics]
-  10.0.0.000
-
-[piCalendar]
-  10.0.0.000
+[host1]
+  10.0.0.158
