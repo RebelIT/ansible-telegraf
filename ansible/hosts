@@ -2,15 +2,31 @@
 [hosts:vars]
   ssh_user=pi
   gopath=/home/pi/go/
-  telegraf_db=10.0.0.115
+  telegraf_db=10.0.0.158
   ansible_become=true
 
 [hosts:children]
-  host1
+  calendar
+  gome
+  metrics
 
-[host1:vars]
-  app=someAppNameHereforTag
+[calendar:vars]
+  app=calendar
   hardware=pi
 
-[host1]
+[gome:vars]
+  app=gome
+  hardware=pi
+
+[metrics:vars]
+  app=metrics
+  hardware=pi
+
+[calendar]
+  10.0.0.115
+
+[gome]
+  10.0.0.106
+
+[gome]
   10.0.0.158
